@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market Fee Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="FormStyle.css" type="text/css">
+</head>
+<body>
+<div class="container">
+    <h2>Daily Market Fee Form</h2>
+    <form id="feeForm" method="POST">
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <label>Sources</label>
+            <fieldset class="source-fieldset">
+                <legend class="sr-only">Fee sources</legend>
+                <div class="sources-grid">
+                    <div class="source-card">
+                        <div class="source-header">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="diCheckbox" id="diCheckbox" value="D.I">
+                                D.I
+                            </label>
+                        </div>
+                        <div class="source-body">
+                            <div class="row-inline">
+                                <div class="form-group">
+                                    <label for="diCommodity">Commodity</label>
+                                    <select id="diCommodity" name="diCommodity">
+                                        <option value="" disabled selected>Select Commodity</option>
+                                        <option value="Paddy">Paddy</option>
+                                        <option value="Maize">Maize</option>
+                                        <option value="Cotton">Cotton</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="diValuation">Valuation</label>
+                                    <input type="number" id="diValuation" name="diValuation" min="0" placeholder="Enter amount" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="market-fee-row">
+                                <div class="form-group">
+                                    <label for="diMarketFee">Market Fee</label>
+                                    <input type="number" id="diMarketFee" name="diMarketFee" autocomplete="off" readonly step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="source-actions">
+                            <button type="button" class="submit-btn btn-secondary" onclick="calculateMarketFee('di', true)">Calculate</button>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="mcpCheckbox" id="mcpCheckbox" value="MCP">
+                                MCP
+                            </label>
+                        </div>
+                        <div class="source-body">
+                            <div class="row-inline">
+                                <div class="form-group">
+                                    <label for="mcpCommodity">Commodity</label>
+                                    <select id="mcpCommodity" name="mcpCommodity">
+                                        <option value="" disabled selected>Select Commodity</option>
+                                        <option value="Paddy">Paddy</option>
+                                        <option value="Maize">Maize</option>
+                                        <option value="Cotton">Cotton</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mcpValuation">Valuation</label>
+                                    <input type="number" id="mcpValuation" name="mcpValuation" min="0" placeholder="Enter amount" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="market-fee-row">
+                                <div class="form-group">
+                                    <label for="mcpMarketFee">Market Fee</label>
+                                    <input type="number" id="mcpMarketFee" name="mcpMarketFee" autocomplete="off" readonly step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="source-actions">
+                            <button type="button" class="submit-btn btn-secondary" onclick="calculateMarketFee('mcp', true)">Calculate</button>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="govtCheckbox" id="govtCheckbox" value="Govt">
+                                Govt
+                            </label>
+                        </div>
+                        <div class="source-body">
+                            <div class="row-inline">
+                                <div class="form-group">
+                                    <label for="govtCommodity">Commodity</label>
+                                    <select id="govtCommodity" name="govtCommodity">
+                                        <option value="" disabled selected>Select Commodity</option>
+                                        <option value="Paddy">Paddy</option>
+                                        <option value="Maize">Maize</option>
+                                        <option value="Cotton">Cotton</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="govtValuation">Valuation</label>
+                                    <input type="number" id="govtValuation" name="govtValuation" min="0" placeholder="Enter amount" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="market-fee-row">
+                                <div class="form-group">
+                                    <label for="govtMarketFee">Market Fee</label>
+                                    <input type="number" id="govtMarketFee" name="govtMarketFee" autocomplete="off" readonly step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="source-actions">
+                            <button type="button" class="submit-btn btn-secondary" onclick="calculateMarketFee('govt', true)">Calculate</button>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="epCheckbox" id="epCheckbox" value="Ep">
+                                Ep
+                            </label>
+                        </div>
+                        <div class="source-body">
+                            <div class="row-inline">
+                                <div class="form-group">
+                                    <label for="epCommodity">Commodity</label>
+                                    <select id="epCommodity" name="epCommodity">
+                                        <option value="" disabled selected>Select Commodity</option>
+                                        <option value="Paddy">Paddy</option>
+                                        <option value="Maize">Maize</option>
+                                        <option value="Cotton">Cotton</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="epValuation">Valuation</label>
+                                    <input type="number" id="epValuation" name="epValuation" min="0" placeholder="Enter amount" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="market-fee-row">
+                                <div class="form-group">
+                                    <label for="epMarketFee">Market Fee</label>
+                                    <input type="number" id="epMarketFee" name="epMarketFee" autocomplete="off" readonly step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="source-actions">
+                            <button type="button" class="submit-btn btn-secondary" onclick="calculateMarketFee('ep', true)">Calculate</button>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="othersCheckbox" id="othersCheckbox" value="Others">
+                                Others
+                            </label>
+                        </div>
+                        <div class="source-body">
+                            <div class="row-inline">
+                                <div class="form-group">
+                                    <label for="othersValuation">Valuation</label>
+                                    <input type="number" id="othersValuation" name="othersValuation" min="0" placeholder="Enter amount" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="market-fee-row">
+                                <div class="form-group">
+                                    <label for="othersMarketFee">Market Fee</label>
+                                    <input type="number" id="othersMarketFee" name="othersMarketFee" autocomplete="off" readonly step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="source-actions">
+                            <button type="button" class="submit-btn btn-secondary" onclick="calculateMarketFee('others', false)">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="totals-card">
+            <div class="totals-row">
+                <div class="form-group">
+                    <label for="dayTotal">Day Total</label>
+                    <input type="number" id="dayTotal" name="dayTotal" autocomplete="off" readonly step="0.01">
+                </div>
+                <div class="totals-actions">
+                    <button type="button" class="submit-btn btn-secondary" id="displayDayTotal" onclick="calculateDayTotal()">Display Day Total</button>
+                    <button type="submit" class="submit-btn btn-primary" name="save" id="saveBtn" onclick="submitForm(event)">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    const FEE_RATE = 0.01;
+
+    function calculateMarketFee(sourcePrefix, hasCommodity) {
+        const checkbox = document.getElementById(sourcePrefix + 'Checkbox');
+        if (!checkbox.checked) return;
+        if (hasCommodity) {
+            const select = document.getElementById(sourcePrefix + 'Commodity');
+            if (!select || select.selectedIndex <= 0) return;
+        }
+        const valuation = parseFloat(document.getElementById(sourcePrefix + 'Valuation').value);
+        if (isNaN(valuation) || valuation <= 0) {
+            alert("Please enter a valid valuation amount.");
+            return;
+        }
+        const marketFee = (valuation * FEE_RATE).toFixed(2);
+        document.getElementById(sourcePrefix + 'MarketFee').value = marketFee;
+    }
+
+    function calculateDayTotal() {
+        const diMarketFee = parseFloat(document.getElementById('diMarketFee').value) || 0;
+        const mcpMarketFee = parseFloat(document.getElementById('mcpMarketFee').value) || 0;
+        const govtMarketFee = parseFloat(document.getElementById('govtMarketFee').value) || 0;
+        const epMarketFee = parseFloat(document.getElementById('epMarketFee').value) || 0;
+        const othersMarketFee = parseFloat(document.getElementById('othersMarketFee').value) || 0;
+
+        const dayTotal = diMarketFee + mcpMarketFee + govtMarketFee + epMarketFee + othersMarketFee;
+        document.getElementById('dayTotal').value = dayTotal.toFixed(2);
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        const form = document.getElementById('feeForm');
+        const formData = new FormData(form);
+        const jsonData = {};
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });
+
+        const numberFields = ['diValuation', 'diMarketFee', 'mcpValuation', 'mcpMarketFee', 'govtValuation', 'govtMarketFee', 'epValuation', 'epMarketFee', 'othersValuation', 'othersMarketFee', 'dayTotal'];
+        numberFields.forEach(field => {
+            if (jsonData[field] === '' || jsonData[field] === undefined) {
+                jsonData[field] = '0';
+            }
+        });
+
+        jsonData.diCheckbox = document.getElementById('diCheckbox').checked ? 'D.I' : '';
+        jsonData.mcpCheckbox = document.getElementById('mcpCheckbox').checked ? 'MCP' : '';
+        jsonData.govtCheckbox = document.getElementById('govtCheckbox').checked ? 'Govt' : '';
+        jsonData.epCheckbox = document.getElementById('epCheckbox').checked ? 'Ep' : '';
+        jsonData.othersCheckbox = document.getElementById('othersCheckbox').checked ? 'Others' : '';
+
+        if (document.getElementById('dayTotal').value === "") {
+            alert("Please calculate the day total before saving.");
+            return;
+        }
+
+        if (!document.getElementById('date').value) {
+            alert("Please select a date.");
+            return;
+        }
+
+        const saveBtn = document.getElementById('saveBtn');
+        const originalText = saveBtn.textContent;
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving...';
+
+        fetch('/amc/insert', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(jsonData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Server error: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const message = data.details && data.details.length > 0
+                ? data.details.join('\n')
+                : data.message;
+            alert(message);
+            if (data.success) {
+                form.reset();
+            }
+        })
+        .catch(error => {
+            alert('Failed to save. Please try again.');
+            console.error('Error:', error);
+        })
+        .finally(() => {
+            saveBtn.disabled = false;
+            saveBtn.textContent = originalText;
+        });
+    }
+</script>
+</body>
+</html>

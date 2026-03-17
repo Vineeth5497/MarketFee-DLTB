@@ -1,0 +1,29 @@
+# Compiled
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*.swo
+
+# Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local config (if containing secrets)
+# application-local.properties
