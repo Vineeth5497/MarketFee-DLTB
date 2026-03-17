@@ -12,9 +12,9 @@ A Spring Boot application for calculating and recording daily market fees from v
 
 1. Create a PostgreSQL database named `MARKET_FEE`
 2. Configure database connection (optional - defaults work for local development):
-   - `DB_URL` - JDBC URL (default: `jdbc:postgresql://localhost:5432/MARKET_FEE`)
-   - `DB_USERNAME` - Database username (default: `postgres`)
-   - `DB_PASSWORD` - Database password (default: `admin`)
+   - `DB_URL` - JDBC URL 
+   - `DB_USERNAME` - Database username 
+   - `DB_PASSWORD` - Database password
 
 ## Running the Application
 
@@ -27,8 +27,6 @@ For production:
 mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
-The application runs on port 8085. Access the form at:
-- http://localhost:8085/MarketFeeForm.html
 
 ## API
 
