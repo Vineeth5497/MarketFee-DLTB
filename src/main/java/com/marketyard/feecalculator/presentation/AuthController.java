@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.Optional;
 
+/**
+ * REST controller responsible for handling authentication-related requests.
+ * Provides endpoints for user registration (signup) and authentication (login).
+ */
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -17,6 +21,14 @@ public class AuthController {
         this.employeeRepo = employeeRepo;
     }
 
+    /**
+     * Handles employee registration.
+     * Validates the employee code (must be DLTB-A or DLTB-B) and ensures
+     * the employee ID is not already registered before saving to the database.
+     *
+     * @param request The signup payload containing employee details.
+     * @return ApiResponse indicating success or failure of the registration.
+     */
     @PostMapping("/signup")
     public ApiResponse signup(@RequestBody SignupRequest request) {
         try {
@@ -44,6 +56,14 @@ public class AuthController {
         }
     }
 
+    /**
+     * Handles employee login.
+     * Authenticates the user by verifying their employee ID and password
+     * against the records in the database.
+     *
+     * @param request The login payload containing employee ID and password.
+     * @return ApiResponse indicating successful authentication or an error message.
+     */
     @PostMapping("/login")
     public ApiResponse login(@RequestBody LoginRequest request) {
         try {

@@ -3,25 +3,30 @@ package com.marketyard.feecalculator.entity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * JPA entity representing an employee registered in the system.
+ * Maps to the "employees" table in the database.
+ * Employee credentials are stored here and used for authentication.
+ */
 @Entity
 @Table(name = "employees")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // Auto-generated primary key
 
-    private String emailId;
-    
-    private LocalDate dateOfBirth;
+    private String emailId;         // Employee's email address
+
+    private LocalDate dateOfBirth;  // Employee's date of birth
 
     @Column(unique = true, nullable = false)
-    private String employeeId;
+    private String employeeId;      // Unique employee identifier (e.g. E1001)
 
     @Column(nullable = false)
-    private String employeeCode;
+    private String employeeCode;    // Company-issued code (DLTB-A or DLTB-B)
 
     @Column(nullable = false)
-    private String password;
+    private String password;        // Plain-text password (consider hashing in future versions)
 
     public Employee() {}
 

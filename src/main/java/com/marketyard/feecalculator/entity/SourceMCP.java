@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+/**
+ * JPA entity representing fee data collected from the MCP (Market Commodity Platform) source.
+ * Maps to the "sourceMCP" table in the database.
+ */
 @Entity
 @Table(name = "sourceMCP")
 public class SourceMCP {
@@ -18,15 +22,19 @@ public class SourceMCP {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name ="transaction_id", updatable = false, nullable = false)
-    private int sourceMCPId;
+    private int sourceMCPId;        // Auto-generated transaction identifier
+
     @Column(name="Date")
-    private LocalDate date;
+    private LocalDate date;         // The date the MCP fee was collected
+
     @Column(name="Commodity")
-    private String commodity;
+    private String commodity;       // The commodity name for which MCP fee was calculated
+
     @Column(name="Valuation")
-    private double valuation;
+    private double valuation;       // The total valuation of the MCP commodity
+
     @Column(name="MarketFee")
-    private double mcpMarketFee;
+    private double mcpMarketFee;    // The calculated market fee for MCP source
 
     public LocalDate getDate() {
         return date;

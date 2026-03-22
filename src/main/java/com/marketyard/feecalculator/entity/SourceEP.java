@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+/**
+ * JPA entity representing fee data collected from the EP (External Purchaser) source.
+ * Maps to the "sourceEP" table in the database.
+ */
 @Entity
 @Table(name = "sourceEP")
 public class SourceEP {
@@ -18,15 +22,19 @@ public class SourceEP {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "transaction_id",nullable = false, updatable = false)
-    private int sourceEPId;
+    private int sourceEPId;         // Auto-generated transaction identifier
+
     @Column(name="Date")
-    private LocalDate date;
+    private LocalDate date;         // The date the EP fee was collected
+
     @Column(name="Commodity")
-    private String commodity;
+    private String commodity;       // The commodity name for which EP fee was calculated
+
     @Column(name="Valuation")
-    private double valuation;
+    private double valuation;       // The total valuation of the EP commodity
+
     @Column(name="MarketFee")
-    private double epMarketFee;
+    private double epMarketFee;     // The calculated market fee for EP source
 
     public LocalDate getDate() {
         return date;

@@ -76,9 +76,15 @@
     
     <script src="auth-logic.js"></script>
     <script>
+        // Prevent back button from leaving login page or showing cached pages after logout
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+        };
+
         // Check if user is already logged in, redirect to home if true
         if (sessionStorage.getItem('employeeId')) {
-            window.location.href = 'home.html';
+            window.location.replace('home.html');
         }
     </script>
 </body>

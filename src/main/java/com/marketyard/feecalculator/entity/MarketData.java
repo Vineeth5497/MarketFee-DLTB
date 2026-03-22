@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+/**
+ * JPA entity representing the top-level market fee summary for a given day.
+ * Maps to the "marketData" table in the database.
+ * Stores the date, daily total, monthly total, and grand total fees.
+ */
 @Entity
 @Table(name = "marketData")
 public class MarketData {
@@ -16,15 +21,19 @@ public class MarketData {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="transaction_id", updatable = false, nullable = false)
-    private int marketDataId;
+    private int marketDataId;           // Auto-generated transaction identifier
+
     @Column(name="Date", nullable = false)
-    private LocalDate date;
+    private LocalDate date;             // The date the fee data was recorded
+
     @Column(name="day_total")
-    private double dayTotal;
+    private double dayTotal;            // Total market fee collected for the day
+
     @Column(name="month_total")
-    private double monthTotal;
+    private double monthTotal;          // Cumulative total for the current month
+
     @Column(name="grand_total")
-    private double grandTotal;
+    private double grandTotal;          // All-time cumulative grand total
 
     public LocalDate getDate() {
         return date;

@@ -1,8 +1,13 @@
+/**
+ * Toggles visibility between the Login and Signup forms.
+ * @param {Event} e - The DOM event, used to prevent default link behavior.
+ */
 function toggleForms(e) {
     if(e) e.preventDefault();
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
     
+    // Switch the 'active-form' class between the two forms
     if (loginForm.classList.contains('active-form')) {
         loginForm.classList.remove('active-form');
         signupForm.classList.add('active-form');
@@ -12,23 +17,34 @@ function toggleForms(e) {
     }
 }
 
+/**
+ * Handles the submission of the Login form.
+ * Validates inputs, makes an API call to authenticate the user,
+ * and sets the session storage upon success.
+ * @param {Event} e - The form submission event.
+ */
 function submitLoginForm(e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent traditional form submission
+    
+    // Trigger HTML5 validation
     const form = document.getElementById('loginForm');
     if (!form.checkValidity()) {
         form.reportValidity();
         return;
     }
     
+    // Extract credentials from the form inputs
     const employeeId = document.getElementById('loginEmployeeId').value;
     const password = document.getElementById('loginPassword').value;
     const msgDiv = document.getElementById('loginMessage');
     const btn = document.getElementById('loginBtn');
     
+    // Update UI state to loading
     msgDiv.className = 'message';
     msgDiv.textContent = 'Authenticating...';
     btn.disabled = true;
 
+    // Send login request to the backend API
     fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -40,7 +56,7 @@ function submitLoginForm(e) {
             msgDiv.className = 'message success';
             msgDiv.textContent = 'Login successful! Redirecting...';
             sessionStorage.setItem('employeeId', employeeId);
-            setTimeout(() => { window.location.href = 'home.html'; }, 800);
+            setTimeout(() => { window.location.replace('home.html'); }, 800);
         } else {
             msgDiv.className = 'message error';
             msgDiv.textContent = data.message || 'Login failed';
@@ -55,14 +71,23 @@ function submitLoginForm(e) {
     });
 }
 
+/**
+ * Handles the submission of the Signup form.
+ * Validates inputs (including specific employee codes), makes an API call
+ * to register the user, and transitions to the login form upon success.
+ * @param {Event} e - The form submission event.
+ */
 function submitSignupForm(e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent traditional form submission
+    
+    // Trigger HTML5 validation
     const form = document.getElementById('signupForm');
     if (!form.checkValidity()) {
         form.reportValidity();
         return;
     }
 
+    // Implement specific validation for Employee Code
     const employeeCodeInput = document.getElementById('signupEmployeeCode').value.trim().toUpperCase();
     if (employeeCodeInput !== 'DLTB-A' && employeeCodeInput !== 'DLTB-B') {
         const msgDiv = document.getElementById('signupMessage');
@@ -71,6 +96,7 @@ function submitSignupForm(e) {
         return;
     }
 
+    // Prepare payload for signup
     const data = {
         employeeId: document.getElementById('signupEmployeeId').value,
         employeeCode: document.getElementById('signupEmployeeCode').value,
@@ -81,10 +107,12 @@ function submitSignupForm(e) {
     const msgDiv = document.getElementById('signupMessage');
     const btn = document.getElementById('signupBtn');
     
+    // Update UI state to loading
     msgDiv.className = 'message';
     msgDiv.textContent = 'Creating account...';
     btn.disabled = true;
 
+    // Send signup request to the backend API
     fetch('/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

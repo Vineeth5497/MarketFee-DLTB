@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+/**
+ * JPA entity representing fee data collected from miscellaneous (Others) sources.
+ * Maps to the "sourceOthers" table in the database.
+ * Unlike other sources, this entity does not track a specific commodity name.
+ */
 @Entity
 @Table(name = "sourceOthers")
 public class SourceOthers {
@@ -17,13 +22,16 @@ public class SourceOthers {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name ="transaction_id", updatable = false, nullable = false)
-    private int sourceOthersId;
+    private int sourceOthersId;     // Auto-generated transaction identifier
+
     @Column(name="Date")
-    private LocalDate date;
+    private LocalDate date;         // The date the Others fee was collected
+
     @Column(name="Valuation")
-    private double valuation;
+    private double valuation;       // The total valuation for Others source
+
     @Column(name="MarketFee")
-    private double othersMarketFee;
+    private double othersMarketFee; // The calculated market fee for Others source
 
     public LocalDate getDate() {
         return date;

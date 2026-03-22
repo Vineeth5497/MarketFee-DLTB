@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+/**
+ * JPA entity representing fee data collected from the D.I (Direct Income) source.
+ * Maps to the "sourceDI" table in the database.
+ */
 @Entity
 @Table(name = "sourceDI")
 public class SourceDI {
@@ -18,15 +22,19 @@ public class SourceDI {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name ="transaction_id", updatable = false, nullable = false)
-    private int sourceDIId;
+    private int sourceDIId;         // Auto-generated transaction identifier
+
     @Column(name="Date", nullable = false)
-    private LocalDate date;
+    private LocalDate date;         // The date the D.I fee was collected
+
     @Column(name="Commodity")
-    private String commodity;
+    private String commodity;       // The commodity name for which D.I fee was calculated
+
     @Column(name="Valuation")
-    private double valuation;
+    private double valuation;       // The total valuation of the D.I commodity
+
     @Column(name="MarketFee")
-    private double diMarketFee;
+    private double diMarketFee;     // The calculated market fee for D.I source
 
     public LocalDate getDate() {
         return date;
