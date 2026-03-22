@@ -5,9 +5,17 @@
     <title>Market Fee Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="FormStyle.css" type="text/css">
+    <script src="auth-guard.js"></script>
 </head>
-<body>
-<div class="container">
+<body style="background-color: var(--color-bg); margin: 0;">
+<div class="nav-bar" style="background: #1f2937; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+    <div style="color: white; font-weight: 600; font-family: system-ui, sans-serif; font-size: 1.25rem;">Market Fee Form</div>
+    <div>
+        <a href="home.html" style="color: #e5e7eb; text-decoration: none; margin-right: 20px; font-family: system-ui, sans-serif; font-size: 0.9rem;">&larr; Back to Home</a>
+        <button type="button" onclick="logout()" style="background: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: system-ui, sans-serif; font-size: 0.9rem; font-weight: 500;">Logout</button>
+    </div>
+</div>
+<div class="container" style="margin-top: 20px;">
     <h2>Daily Market Fee Form</h2>
     <form id="feeForm" method="POST">
         <div class="form-group">

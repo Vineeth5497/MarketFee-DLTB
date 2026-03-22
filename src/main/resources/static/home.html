@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Market Fee Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="auth-guard.js"></script>
+    <style>
+        body {
+            margin: 0; font-family: 'Inter', system-ui, sans-serif;
+            background-color: #f3f4f6; color: #111827;
+        }
+        .navbar {
+            background-color: #1f2937; color: white;
+            padding: 1rem 2rem; display: flex;
+            justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .navbar h1 { margin: 0; font-size: 1.25rem; font-weight: 600; }
+        .logout-btn {
+            background: #ef4444; color: white; border: none;
+            padding: 8px 16px; border-radius: 6px; cursor: pointer;
+            font-weight: 500; transition: background 0.2s;
+            font-family: inherit;
+        }
+        .logout-btn:hover { background: #dc2626; }
+        
+        .container {
+            max-width: 1000px; margin: 40px auto; padding: 0 20px;
+        }
+        .dashboard-header {
+            margin-bottom: 30px;
+        }
+        .dashboard-header h2 { font-size: 2rem; margin: 0 0 8px; font-weight: 600; }
+        .dashboard-header p { color: #6b7280; margin: 0; }
+        
+        .card-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;
+        }
+        .action-card {
+            background: white; border-radius: 12px; padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            text-decoration: none; color: inherit; display: block;
+            border: 1px solid #e5e7eb; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .action-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-color: #4f46e5;
+        }
+        .action-card h3 { margin: 0 0 12px; color: #4f46e5; font-size: 1.25rem; font-weight: 600; }
+        .action-card p { margin: 0; color: #4b5563; line-height: 1.5; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Market Fee Dashboard</h1>
+        <div>
+            <span id="userGreeting" style="margin-right: 15px; font-size: 0.9rem; color: #e5e7eb;"></span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="dashboard-header">
+            <h2>Welcome to your Dashboard</h2>
+            <p>Select an action below to get started.</p>
+        </div>
+        <div class="card-grid">
+            <a href="MarketFeeForm.html" class="action-card">
+                <h3>Calculate Daily Fees</h3>
+                <p>Open the Market Fee Form to input daily transactions and calculate fees for DI, MCP, Govt, Ep, and Others.</p>
+            </a>
+            <div class="action-card" style="opacity: 0.6; cursor: not-allowed; transform: none; border-color: #e5e7eb;">
+                <h3 style="color: #6b7280;">View Reports</h3>
+                <p>Historical fee collection reports and analytics. (Coming Soon)</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('userGreeting').textContent = 'User: ' + sessionStorage.getItem('employeeId');
+    </script>
+</body>
+</html>

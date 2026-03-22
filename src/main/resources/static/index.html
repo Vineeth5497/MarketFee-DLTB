@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Fee Calculator - Authentication</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="AuthStyle.css">
+</head>
+<body>
+    <!-- Background Animated Shapes -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="auth-container">
+        <div class="auth-glass-panel">
+            <div class="branding">
+                <div class="logo-box">MFC</div>
+                <h2>Market Fee Calculator</h2>
+                <p>Manage your daily market fees efficiently</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active-form">
+                <h3>Welcome Back</h3>
+                <div class="input-group">
+                    <label for="loginEmployeeId">Employee ID</label>
+                    <input type="text" id="loginEmployeeId" required autocomplete="off" placeholder="e.g. E1001">
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="primary-btn" id="loginBtn" onclick="submitLoginForm(event)">Sign In</button>
+                <div class="toggle-link">
+                    <a href="#" onclick="toggleForms(event)">Don't have an account? Sign Up here</a>
+                </div>
+                <div id="loginMessage" class="message"></div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form hidden-form">
+                <h3>Create Account</h3>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="signupEmployeeId">Employee ID</label>
+                        <input type="text" id="signupEmployeeId" required autocomplete="off" placeholder="e.g. E1001">
+                    </div>
+                    <div class="input-group">
+                        <label for="signupEmployeeCode">Employee Code</label>
+                        <input type="text" id="signupEmployeeCode" required autocomplete="off" placeholder="e.g. DLTB-A">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="signupEmail">Email ID</label>
+                    <input type="email" id="signupEmail" required placeholder="email@example.com">
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="signupDob">Date of Birth</label>
+                        <input type="date" id="signupDob" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required placeholder="••••••••">
+                    </div>
+                </div>
+                <button type="submit" class="primary-btn" id="signupBtn" onclick="submitSignupForm(event)">Sign Up</button>
+                <div class="toggle-link">
+                    <a href="#" onclick="toggleForms(event)">Already have an account? Sign In here</a>
+                </div>
+                <div id="signupMessage" class="message"></div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="auth-logic.js"></script>
+    <script>
+        // Check if user is already logged in, redirect to home if true
+        if (sessionStorage.getItem('employeeId')) {
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+</html>
