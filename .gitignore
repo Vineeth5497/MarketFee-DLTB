@@ -27,3 +27,4 @@ Thumbs.db
 
 # Local config (if containing secrets)
 # application-local.properties
+*.properties
