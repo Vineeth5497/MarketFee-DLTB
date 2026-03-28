@@ -15,15 +15,15 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // Auto-generated primary key
 
-    private String emailId;         // Employee's email address
+    private String emailId;
 
-    private LocalDate dateOfBirth;  // Employee's date of birth
+    private LocalDate dateOfBirth;
 
     @Column(unique = true, nullable = false)
-    private String employeeId;      // Unique employee identifier (e.g. E1001)
+    private String employeeId;
 
     @Column(nullable = false)
-    private String employeeCode;    // Company-issued code (DLTB-A or DLTB-B)
+    private String employeeCode;
 
     @Column(nullable = false)
     private String password;        // Plain-text password (consider hashing in future versions)

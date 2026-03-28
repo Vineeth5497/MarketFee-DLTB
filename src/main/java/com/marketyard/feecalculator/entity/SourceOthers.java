@@ -25,13 +25,11 @@ public class SourceOthers {
     private int sourceOthersId;     // Auto-generated transaction identifier
 
     @Column(name="Date")
-    private LocalDate date;         // The date the Others fee was collected
-
+    private LocalDate date;
     @Column(name="Valuation")
-    private double valuation;       // The total valuation for Others source
-
+    private double valuation;
     @Column(name="MarketFee")
-    private double othersMarketFee; // The calculated market fee for Others source
+    private double othersMarketFee;
 
     public LocalDate getDate() {
         return date;

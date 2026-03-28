@@ -25,16 +25,13 @@ public class SourceEP {
     private int sourceEPId;         // Auto-generated transaction identifier
 
     @Column(name="Date")
-    private LocalDate date;         // The date the EP fee was collected
-
+    private LocalDate date;
     @Column(name="Commodity")
-    private String commodity;       // The commodity name for which EP fee was calculated
-
+    private String commodity;
     @Column(name="Valuation")
-    private double valuation;       // The total valuation of the EP commodity
-
+    private double valuation;
     @Column(name="MarketFee")
-    private double epMarketFee;     // The calculated market fee for EP source
+    private double epMarketFee;
 
     public LocalDate getDate() {
         return date;

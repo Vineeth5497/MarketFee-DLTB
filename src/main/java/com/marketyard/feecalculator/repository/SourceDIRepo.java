@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 /**
- * Spring Data JPA repository for {@link com.marketyard.feecalculator.entity.SourceDI} entities.
+ * Spring Data JPA repository for
+ * {@link com.marketyard.feecalculator.entity.SourceDI} entities.
  * Provides standard CRUD operations for D.I source fee records.
  */
 public interface SourceDIRepo extends JpaRepository<SourceDI, Integer> {

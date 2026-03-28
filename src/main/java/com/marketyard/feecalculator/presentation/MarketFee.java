@@ -11,42 +11,38 @@ import java.time.LocalDate;
  * Only sources with their checkbox flag set will be saved to the database.
  */
 public class MarketFee {
-    protected MarketFee() {}
+    protected MarketFee() {
+    }
 
     @NotNull(message = "Date is required")
-    private LocalDate date;         // The date for which the fee data is being submitted
+    private LocalDate date;
 
-    // --- D.I Source Fields ---
-    private String diCheckbox;      // Set to "D.I" if this source is active
-    private String diCommodity;     // Name of the commodity for D.I source
-    private double diValuation;     // Total valuation for D.I source
-    private double diMarketFee;     // Market fee amount for D.I source
+    private String diCheckbox;
+    private String diCommodity;
+    private double diValuation;
+    private double diMarketFee;
 
-    // --- MCP Source Fields ---
-    private String mcpCheckbox;     // Set to "MCP" if this source is active
-    private String mcpCommodity;    // Name of the commodity for MCP source
-    private double mcpValuation;    // Total valuation for MCP source
-    private double mcpMarketFee;    // Market fee amount for MCP source
+    private String mcpCheckbox;
+    private String mcpCommodity;
+    private double mcpValuation;
+    private double mcpMarketFee;
 
-    // --- Government Source Fields ---
-    private String govtCheckbox;    // Set to "Govt" if this source is active
-    private String govtCommodity;   // Name of the commodity for Govt source
-    private double govtValuation;   // Total valuation for Govt source
-    private double govtMarketFee;   // Market fee amount for Govt source
+    private String govtCheckbox;
+    private String govtCommodity;
+    private double govtValuation;
+    private double govtMarketFee;
 
-    // --- EP Source Fields ---
-    private String epCheckbox;      // Set to "Ep" if this source is active
-    private String epCommodity;     // Name of the commodity for EP source
-    private double epValuation;     // Total valuation for EP source
-    private double epMarketFee;     // Market fee amount for EP source
+    private String epCheckbox;
+    private String epCommodity;
+    private double epValuation;
+    private double epMarketFee;
 
-    // --- Others Source Fields ---
-    private String othersCheckbox;  // Set to "Others" if this source is active
-    private String othersCommodity; // Name of the commodity for Others source
-    private double othersValuation; // Total valuation for Others source
-    private double othersMarketFee; // Market fee amount for Others source
+    private String othersCheckbox;
+    private String othersCommodity;
+    private double othersValuation;
+    private double othersMarketFee;
 
-    private double dayTotal;        // Total market fee collected for the day across all sources
+    private double dayTotal;
 
     public LocalDate getDate() {
         return date;

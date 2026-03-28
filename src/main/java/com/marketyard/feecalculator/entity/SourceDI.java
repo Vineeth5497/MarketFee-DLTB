@@ -25,16 +25,13 @@ public class SourceDI {
     private int sourceDIId;         // Auto-generated transaction identifier
 
     @Column(name="Date", nullable = false)
-    private LocalDate date;         // The date the D.I fee was collected
-
+    private LocalDate date;
     @Column(name="Commodity")
-    private String commodity;       // The commodity name for which D.I fee was calculated
-
+    private String commodity;
     @Column(name="Valuation")
-    private double valuation;       // The total valuation of the D.I commodity
-
+    private double valuation;
     @Column(name="MarketFee")
-    private double diMarketFee;     // The calculated market fee for D.I source
+    private double diMarketFee;
 
     public LocalDate getDate() {
         return date;

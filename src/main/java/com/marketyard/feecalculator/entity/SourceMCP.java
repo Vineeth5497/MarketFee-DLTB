@@ -25,16 +25,13 @@ public class SourceMCP {
     private int sourceMCPId;        // Auto-generated transaction identifier
 
     @Column(name="Date")
-    private LocalDate date;         // The date the MCP fee was collected
-
+    private LocalDate date;
     @Column(name="Commodity")
-    private String commodity;       // The commodity name for which MCP fee was calculated
-
+    private String commodity;
     @Column(name="Valuation")
-    private double valuation;       // The total valuation of the MCP commodity
-
+    private double valuation;
     @Column(name="MarketFee")
-    private double mcpMarketFee;    // The calculated market fee for MCP source
+    private double mcpMarketFee;
 
     public LocalDate getDate() {
         return date;

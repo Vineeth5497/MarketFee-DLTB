@@ -12,11 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class FeeCalculatorApplication {
 
-	/**
-	 * Application startup method.
-	 *
-	 * @param args Command-line arguments passed to the application.
-	 */
 	public static void main(String[] args) {
 		SpringApplication.run(FeeCalculatorApplication.class, args);
 	}

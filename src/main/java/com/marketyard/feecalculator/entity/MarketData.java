@@ -24,16 +24,13 @@ public class MarketData {
     private int marketDataId;           // Auto-generated transaction identifier
 
     @Column(name="Date", nullable = false)
-    private LocalDate date;             // The date the fee data was recorded
-
+    private LocalDate date;
     @Column(name="day_total")
-    private double dayTotal;            // Total market fee collected for the day
-
+    private double dayTotal;
     @Column(name="month_total")
-    private double monthTotal;          // Cumulative total for the current month
-
+    private double monthTotal;
     @Column(name="grand_total")
-    private double grandTotal;          // All-time cumulative grand total
+    private double grandTotal;
 
     public LocalDate getDate() {
         return date;

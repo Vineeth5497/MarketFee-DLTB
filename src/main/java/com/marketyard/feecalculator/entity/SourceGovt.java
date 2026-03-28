@@ -25,16 +25,13 @@ public class SourceGovt {
     private int sourceGovtId;       // Auto-generated transaction identifier
 
     @Column(name="Date")
-    private LocalDate date;         // The date the Government fee was collected
-
+    private LocalDate date;
     @Column(name="Commodity")
-    private String commodity;       // The commodity name for which Govt fee was calculated
-
+    private String commodity;
     @Column(name="Valuation")
-    private double valuation;       // The total valuation of the Govt commodity
-
+    private double valuation;
     @Column(name="MarketFee")
-    private double govtMarketFee;   // The calculated market fee for Govt source
+    private double govtMarketFee;
 
     public LocalDate getDate() {
         return date;
